@@ -20,7 +20,7 @@ public class MyApplication extends Application {
         primaryStage.show();
     }
 
-    public void main(String... args) {
+    public static void main(String... args) {
         launch(args);
     }
 }
