@@ -35,6 +35,51 @@
             <version>4.0.1-alpha</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.testfx</groupId>
+            <artifactId>openjfx-monocle</artifactId>
+            <version>1.8.0_20</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.zenjava</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>8.1.4</version>
+                <configuration>
+                    <mainClass>com.guigarage.app.MyApplication</mainClass>
+                    <vendor>GuiGarage (www.guigarage.com)</vendor>
+                    <needShortcut>true</needShortcut>
+                    <needMenu>true</needMenu>
+                    <appName>JavaFX-Application</appName>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>javafx-headless-test</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <testfx.robot>glass</testfx.robot>
+                                <testfx.headless>true</testfx.headless>
+                                <prism.order>sw</prism.order>
+                                <prism.text>t2k</prism.text>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
